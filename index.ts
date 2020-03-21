@@ -3,8 +3,6 @@ const apis = require('./endpoints');
 const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-// const logger = require('../server/logger');
 const config = require('config');
 
 (function start() {

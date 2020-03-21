@@ -1,10 +1,10 @@
 import {Request, Response} from "express";
+import InfectionService from "../services/InfectionService";
 
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const nanoid = require('nanoid');
-const { User } = require('../models/User');
 
 const generateToken = (user) => ({
 	id: user._id,
@@ -15,47 +15,24 @@ const generateToken = (user) => ({
 
 // User Api
 module.exports = router
-	.post('/authenticate', async (req: Request, res: Response) => {
-		const { email, password } = req.body;
-		let response = {};
+	.get('/', async (req: Request, res: Response) => {
+		const { id } = req.body;
 
-		// Fake Search query
-		const user = await User.findOne({ email });
-
-		if (user) {
-			const PW_MATCH = await new Promise((resolve, reject) => {
-				bcrypt.compare(password, user.password, (err, res) => {
-					if (res && !err) {
-						resolve(res);
-					} else {
-						reject(err);
-					}
-				});
-			}).catch((e) => {
-				console.log(e);
-			});
-			console.log(PW_MATCH);
-			if (PW_MATCH) {
-				response = generateToken(user);
+		// TODO get User by id
+		res.send({});
+	})
+	.post('/', async (req: Request, res: Response) => {
+		const { phone, infectionStatus = false, id, firstName, lastName } = req.body;
+		if (id) {
+			if (infectionStatus) {
+				InfectionService.sendUpdateForPossiblyInfected(req.body)
 			}
+			// TODO update user
+		} else {
+			// TODO create user
 		}
-		res.send(response);
-	})
-	.post('/register', async (req: Request, res: Response) => {
-		const { phone, infectionStatus = false } = req.body;
 
-		const newUser = new User({ phone, infectionStatus });
-		const returnedUser = await newUser.save();
-		res.send(returnedUser);
-	})
-	.get('/infectionStatus', async (req: Request, res: Response) => {
-		// TODO gets the infection Status
-
-		res.send();
-	})
-	.post('/infectionStatus', async (req: Request, res: Response) => {
-		// TODO sets infection Status
-		res.send();
+		res.send({});
 	});
 
 

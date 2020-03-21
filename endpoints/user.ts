@@ -3,7 +3,6 @@ import InfectionService from "../services/InfectionService";
 
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
 const nanoid = require('nanoid');
 
 const generateToken = (user) => ({

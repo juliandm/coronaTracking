@@ -4,7 +4,6 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const config = require('config');
-const Pool = require('pg').Pool
 
 (function start() {
 	// DB Connect

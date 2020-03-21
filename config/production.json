@@ -1,5 +1,5 @@
 {
-  "dbConnectionString": "mongodb://localhost:27017/edurata?retryWrites=true&w=majority",
+  "dbConnectionString": "",
   "apiHost": "10.156.0.6",
   "apiPort": "80",
   "appHost": "http://editor.edurata.com"

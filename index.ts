@@ -5,9 +5,11 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const config = require('config');
+import {getConnection} from "./db/connection";
 
 (function start() {
 	// DB Connect
+	let connection = getConnection();
 
 	// Parsing
 	app.use(bodyParser.json());

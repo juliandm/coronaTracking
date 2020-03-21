@@ -1,4 +1,13 @@
 config/keys/
+ormconfig.json
+
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+
 # Logs
 logs
 *.log
@@ -114,4 +123,3 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
-

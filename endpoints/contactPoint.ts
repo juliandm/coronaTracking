@@ -10,4 +10,12 @@ module.exports = router
 	.post("/", async (req: Request, res: Response) => {
 		// TODO Create new trackingPoint
 		res.send({});
+	})
+	.post("/:id/currentSafetyLevel", async (req: Request, res: Response) => {
+		// TODO Create new trackingPoint
+		res.send({});
+	})
+	.get("/:id/lastCheckinOfInfectedUser", async (req: Request, res: Response) => {
+		// TODO gets the tracking point
+		res.send({});
 	});

@@ -3,11 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = router
-	.get("/virusStatus/:id", async (req: Request, res: Response) => {
-		// TODO gets the boolean for status
-		res.send({});
-	})
-	.get("/infectionChain/:id/", async (req: Request, res: Response) => {
-		// TODO
+	.get("/infectionChain/", async (req: Request, res: Response) => {
+		// TODO in: two User ids
 		res.send({});
 	});

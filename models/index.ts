@@ -4,6 +4,7 @@ export interface IUser {
     lastName: String;
     verified: Boolean;
     infectionStatus: Number;
+    phone: Number;
 }
 
 // Central Table

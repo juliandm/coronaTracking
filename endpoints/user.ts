@@ -42,21 +42,15 @@ module.exports = router
 		res.send(response);
 	})
 	.post('/register', async (req: Request, res: Response) => {
-		const { email, password } = req.body;
-		const hashedPassword = await new Promise((resolve, reject) => {
-			bcrypt.hash(password, 10, (err, hash) => {
-				if (err) reject(err);
-				resolve(hash);
-			});
-		});
+		const { phone, infectionStatus = false } = req.body;
 
-		const newUser = new User({ password: hashedPassword, email });
+		const newUser = new User({ phone, infectionStatus });
 		const returnedUser = await newUser.save();
-		console.log(returnedUser);
 		res.send(returnedUser);
 	})
 	.get('/infectionStatus', async (req: Request, res: Response) => {
 		// TODO gets the infection Status
+
 		res.send();
 	})
 	.post('/infectionStatus', async (req: Request, res: Response) => {

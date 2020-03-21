@@ -3,7 +3,8 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = router
-	.get("/infectionChain/", async (req: Request, res: Response) => {
-		// TODO in: two User ids
+	.post("/", async (req: Request, res: Response) => {
+		const { userId, contactPointId } = req.body;
+		// TODO create new Contact
 		res.send({});
 	});

@@ -1,21 +1,18 @@
 import {Request, Response} from "express";
 const express = require("express");
 const router = express.Router();
+const ContactPointService = require("../services/ContactPointService");
 
 module.exports = router
 	.get("/:id", async (req: Request, res: Response) => {
-		// TODO gets the tracking point
-		res.send({});
+		res.send(ContactPointService.getContactPoint());
 	})
 	.post("/", async (req: Request, res: Response) => {
-		// TODO Create new trackingPoint
-		res.send({});
+		res.send(ContactPointService.createContactPoint());
 	})
 	.post("/:id/currentSafetyLevel", async (req: Request, res: Response) => {
-		// TODO Create new trackingPoint
-		res.send({});
+		res.send(ContactPointService.getCurrentSafetyLevel());
 	})
 	.get("/:id/lastCheckinOfInfectedUser", async (req: Request, res: Response) => {
-		// TODO gets the tracking point
-		res.send({});
+		res.send(ContactPointService.getLastCheckinOfInfectedUser());
 	});

@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const config = require('config');
+const Pool = require('pg').Pool
 
 (function start() {
 	// DB Connect
@@ -16,7 +17,7 @@ const config = require('config');
 		origin: config.get("appHost"),
 	}));
 	// Apis
-	app.use('/api', apis);
+	app.use('/api/1.0.0/', apis);
 
 	app.listen(config.get("apiPort"), config.get("apiHost"), () => {
 		console.log("api Started", config.get("apiHost"), config.get("apiPort"))

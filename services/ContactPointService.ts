@@ -1,4 +1,4 @@
-import {IContact} from "../models";
+import {ContactPoint, IContact, IContactPoint, IUser, User} from "../models";
 const smsApiConfig = require("../config/keys/smsApiKey");
 const axios = require('axios');
 
@@ -8,6 +8,11 @@ export default class ContactPointService {
 		readonly userId: string,
 		readonly contactPointId: string,
 		readonly requestTime: Number = Date.now()) {}
+
+	public static getContactPoint(): IContactPoint {
+		return new ContactPoint();
+	};
+	public static createContactPoint(): void {};
 
 	public isSafe(): Boolean {
 		return true;

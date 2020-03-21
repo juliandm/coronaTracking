@@ -1,18 +1,15 @@
 import {Request, Response} from "express";
 const express = require("express");
 const router = express.Router();
-const ContactPointService = require("../services/ContactPointService");
 
 module.exports = router
-	.get("/:id", async (req: Request, res: Response) => {
-		res.send(ContactPointService.getContactPoint());
+	.get("/", async (req: Request, res: Response) => {
+		const { id } = req.body;
+		// TODO get contact point by id
+		res.send();
 	})
 	.post("/", async (req: Request, res: Response) => {
-		res.send(ContactPointService.createContactPoint());
-	})
-	.post("/:id/currentSafetyLevel", async (req: Request, res: Response) => {
-		res.send(ContactPointService.getCurrentSafetyLevel());
-	})
-	.get("/:id/lastCheckinOfInfectedUser", async (req: Request, res: Response) => {
-		res.send(ContactPointService.getLastCheckinOfInfectedUser());
+		const { id, user } = req.body;
+		// TODO create contact point by id
+		res.send();
 	});

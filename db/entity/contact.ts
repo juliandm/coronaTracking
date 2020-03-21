@@ -15,6 +15,6 @@ export class Contact {
     @ManyToMany(type => User)
     users: User[];
 
-    @ManyToOne(type => ContactPoint, ContactPoint => ContactPoint.contacts)
-    contact_point: ContactPoint
+    @ManyToMany(type => ContactPoint)
+    contact_points: ContactPoint[]
 }

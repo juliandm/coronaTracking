@@ -1,3 +1,4 @@
+import "reflect-metadata"
 const express = require('express');
 const apis = require('./endpoints');
 const app = express();

@@ -1,0 +1,6 @@
+{
+  "dbConnectionString": "mongodb://localhost:27017/admin",
+  "apiHost": "localhost",
+  "apiPort": "3001",
+  "appHost": "http://localhost:3000"
+}

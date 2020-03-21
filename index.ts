@@ -1,13 +1,15 @@
+import "reflect-metadata"
 const express = require('express');
 const apis = require('./endpoints');
 const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const config = require('config');
-const Pool = require('pg').Pool
+import {getConnection} from "./db/connection";
 
 (function start() {
 	// DB Connect
+	let connection = getConnection();
 
 	// Parsing
 	app.use(bodyParser.json());

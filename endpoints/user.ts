@@ -1,3 +1,5 @@
+import {Request, Response} from "express";
+
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
@@ -13,7 +15,7 @@ const generateToken = (user) => ({
 
 // User Api
 module.exports = router
-	.post('/authenticate', async (req, resPoint) => {
+	.post('/authenticate', async (req: Request, res: Response) => {
 		const { email, password } = req.body;
 		let response = {};
 
@@ -37,21 +39,24 @@ module.exports = router
 				response = generateToken(user);
 			}
 		}
-		resPoint.send(response);
+		res.send(response);
 	})
+	.post('/register', async (req: Request, res: Response) => {
+		const { phone, infectionStatus = false } = req.body;
 
-
-	.post('/register', async (req, res, next) => {
-		const { email, password } = req.body;
-		const hashedPassword = await new Promise((resolve, reject) => {
-			bcrypt.hash(password, 10, (err, hash) => {
-				if (err) reject(err);
-				resolve(hash);
-			});
-		});
-
-		const newUser = new User({ password: hashedPassword, email });
+		const newUser = new User({ phone, infectionStatus });
 		const returnedUser = await newUser.save();
-		console.log(returnedUser);
 		res.send(returnedUser);
+	})
+	.get('/infectionStatus', async (req: Request, res: Response) => {
+		// TODO gets the infection Status
+
+		res.send();
+	})
+	.post('/infectionStatus', async (req: Request, res: Response) => {
+		// TODO sets infection Status
+		res.send();
 	});
+
+
+

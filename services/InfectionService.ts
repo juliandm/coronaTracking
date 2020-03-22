@@ -1,4 +1,4 @@
-import {IContact, IContactPoint, IUser} from "../models";
+import {IContact, ILocation, IUser} from "../models";
 const smsApiConfig = require("../config/keys/smsApiKey");
 const {DAYS_CONTAGIOUS_SINCE_INFECTION, MINUTES_SPENT_AT_CONTACT_POINT} = require("../constants");
 const axios = require('axios');
@@ -33,9 +33,13 @@ export default class InfectionService {
 	}
 
 	private static sendWarning(contact: IContact) {
-		const messageString = `Hallo du hast dich am ${contact.timestamp} 
-			an dem Ort ${contact.contactPoint.name} aufgehalten, der von einem Corona Patienten aufgesucht wurde.
-			Bitte lass dich testen.`;
+		const messageString = `
+			Am 22.03.2020 hattest du potenziell Kontakt mit einer durch Covid-19 infizierten Person.
+			Kein Grund zur Panik! 
+			Alle wichtigen Informationen und Hotlines, die du jetzt brauchst findest du auf der Homepage des Bundesministeriums für Gesundheit oder telefonisch unter 030 346 465 100.
+			
+			- Dein QRona:Track Team
+			`;
 		axios.post('https://textbelt.com/text', {
 			phone: contact.user.phone,
 			message: messageString,

@@ -1,0 +1,6 @@
+{
+  "dbConnectionString": "postgresql://conflee.de:12001/coro9\nSikAdmaivCofMatFotnifBuvPokarcEw",
+  "apiHost": "localhost",
+  "apiPort": "3001",
+  "appHost": "http://localhost:3000"
+}
